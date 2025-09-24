@@ -515,35 +515,38 @@ public class custom_g_goal_click extends Fragment {
 
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == 0) {
-            for (int grantResult : grantResults) {
-                //허용됬다면
-                if (grantResult == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(getContext(), "앱권한 설정완료", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getContext(), "앱권한설정하세요", Toast.LENGTH_SHORT).show();
-                    getActivity().finish();
-                }
+@Override
+public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+    // 권한 요청 코드에 따라 분기하여 처리
+    switch (requestCode) {
+        case 0: // 사진 권한 등 특정 권한 요청
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // 권한이 허용된 경우, 사용자에게 알리고 원하는 작업을 수행
+                Toast.makeText(getContext(), "사진 권한이 허용되었습니다.", Toast.LENGTH_SHORT).show();
+            } else {
+                // 권한이 거부된 경우, 사용자에게 왜 이 권한이 필요한지 설명
+                // 앱을 강제 종료하지 않고, 기능 사용을 제한하는 것이 좋습니다.
+                Toast.makeText(getContext(), "사진 권한이 거부되어 일부 기능을 사용할 수 없습니다.", Toast.LENGTH_SHORT).show();
             }
-        }
+            break;
 
-        // [START handle_ask_post_notifications_request]
-        switch (requestCode) {
-            case NOTIFICATION_REQUEST_CODE:
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0 &&
-                        grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // FCM SDK (and your app) can post notifications.
-                } else {
-                    // TODO: Inform user that that your app will not show notifications.
-                }
-        }
+        case NOTIFICATION_REQUEST_CODE:
+            // 알림 권한 요청
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // 알림 권한이 허용된 경우
+                Toast.makeText(getContext(), "알림 권한이 허용되었습니다.", Toast.LENGTH_SHORT).show();
+            } else {
+                // 알림 권한이 거부된 경우
+                Toast.makeText(getContext(), "알림 권한이 거부되어 앱 알림을 받을 수 없습니다.", Toast.LENGTH_SHORT).show();
+            }
+            break;
 
+        // 다른 권한 요청이 있다면 여기에 case 추가
     }
+}
 
 
     private String getRealPathFromURI(Uri imageUri) {
