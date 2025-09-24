@@ -30,11 +30,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SearchCategory#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class SearchCategory extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -50,7 +46,7 @@ public class SearchCategory extends Fragment {
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference categoryReference = firebaseDatabase.getReference("Category");
 
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
 
@@ -58,15 +54,7 @@ public class SearchCategory extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SearchCategory.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static SearchCategory newInstance(String param1, String param2) {
         SearchCategory fragment = new SearchCategory();
         Bundle args = new Bundle();

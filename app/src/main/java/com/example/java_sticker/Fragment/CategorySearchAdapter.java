@@ -99,9 +99,6 @@ public class CategorySearchAdapter extends RecyclerView.Adapter<CategorySearchAd
                 ft.replace(R.id.group_layout,DetailFragment).addToBackStack(null).commit();
             }
 
-            //activity.getFragmentManager().beginTransaction().replace(R.id.group_layout, DetailFragment).addToBackStack(null).commit();
-
-            // ((Group_main) view.getContext()).getFragmentManager().beginTransaction().replace(R.id.group_layout, DetailFragment).commit();
 
         });
     }

@@ -56,10 +56,7 @@ public class FragJoin extends Fragment {
     public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         assert inflater != null;
         view = inflater.inflate(R.layout.fragjoin, container, false);
-        //FAT
-//        fab_g = view.findViewById(R.id.fab_g);
-//        //FAB 클릭 시
-//        fab_g.setOnClickListener(view -> toggleFab());
+
         setTabLayout();
         loadTabName();
         return view;
@@ -79,28 +76,7 @@ public class FragJoin extends Fragment {
     }
 
     private void setViewPager() {
-//        assert getFragmentManager() != null;
-//        FragJoinAdapter adapter = new FragJoinAdapter(getChildFragmentManager());
-//        ViewPager viewPager =view.findViewById(R.id.viewPager);
-        //      viewPager.setAdapter(adapter);
-//        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-//        tabLayout = view.findViewById(R.id.tab_layout);
-//        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//                viewPager.setCurrentItem(tab.getPosition());
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//
-//            }
-//        });
+
     }
 
     @Override

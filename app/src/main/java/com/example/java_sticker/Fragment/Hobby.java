@@ -68,9 +68,6 @@ public class Hobby extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-//        getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
-//        getActivity().getSupportFragmentManager().popBackStack();
 
         View view = inflater.inflate(R.layout.fragment_hobby, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fraghome_hobby_ry);

@@ -23,11 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link setup#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class setup extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -57,15 +53,7 @@ public class setup extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment setup.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static setup newInstance(String param1, String param2) {
         setup fragment = new setup();
         Bundle args = new Bundle();

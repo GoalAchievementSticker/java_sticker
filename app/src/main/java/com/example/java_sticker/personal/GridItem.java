@@ -40,11 +40,4 @@ public class GridItem {
 
 
 
-    //    public int getGoal_img_Id() {
-//        return goal_img_Id;
-//    }
-//
-//    public void setGoal_img_Id(int goal_img_Id) {
-//        this.goal_img_Id = goal_img_Id;
-//    }
 }

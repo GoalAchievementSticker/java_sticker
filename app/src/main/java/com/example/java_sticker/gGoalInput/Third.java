@@ -54,15 +54,6 @@ public class Third extends Fragment  {
 
         gGoalInputActivity frag = ((gGoalInputActivity) this.getActivity());
         assert frag != null;
-        // viewPager = frag.findViewById(R.id.input_viewPager);
-
-        //Intent i = getIntent(); //getIntent()로 받을 준비
-
-//        int cnt = i.getIntExtra("count", 0);
-//        String goal = i.getStringExtra("goal");
-//        int limit = i.getIntExtra("limit", 0);
-
-        //sharedpreferences =  getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
@@ -151,9 +142,6 @@ public class Third extends Fragment  {
             }
         });
     }
-//
-//    private int getItem() {
-//        //return viewPager.getCurrentItem() + 1;
-//    }
+
 }
 
