@@ -36,11 +36,7 @@ import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link setup_pofile_img#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class setup_pofile_img extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -84,15 +80,7 @@ public class setup_pofile_img extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment setup_pofile_img.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static setup_pofile_img newInstance(String param1, String param2) {
         setup_pofile_img fragment = new setup_pofile_img();
         Bundle args = new Bundle();

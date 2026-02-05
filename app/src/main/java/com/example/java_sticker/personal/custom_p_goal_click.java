@@ -72,7 +72,7 @@ public class custom_p_goal_click extends AppCompatActivity {
     FirebaseUser user;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = firebaseDatabase.getReference("personalDialog");
-    ImageView sticker_img;
+    //ImageView sticker_img;
     DatabaseReference ds;
 
     private List<String> goal_key = new ArrayList<>();
@@ -121,7 +121,7 @@ public class custom_p_goal_click extends AppCompatActivity {
 
 
         // Create a storage reference from our app
-        sticker_img = findViewById(R.id.sticker_img_2);
+        //sticker_img = findViewById(R.id.sticker_img_2);
         items = new ArrayList<>();
         adapter = new Custom_pAdapter(this, items);
         gridView = (GridViewWithHeaderAndFooter) findViewById(R.id.gridView);
@@ -239,99 +239,64 @@ public class custom_p_goal_click extends AppCompatActivity {
         return true;
     }
 
+
+
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.share_p_goal:
-                //Toast.makeText(getApplicationContext(), "공유", Toast.LENGTH_LONG).show();
+        int itemId = item.getItemId(); // MenuItem ID를 변수에 저장
 
-                Log.d("TAG", "공유 버튼 눌리고있나?");
-                AlertDialog.Builder msgBuilder = new AlertDialog.Builder(custom_p_goal_click.this)
-                        .setTitle("공유")
-                        .setMessage("해당 도장판을 공유하시겠습니까?")
-                        .setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                //Toast.makeText(getApplicationContext(), "공유", Toast.LENGTH_SHORT).show();
-                                View container;
-                                container = getWindow().getDecorView();
-                                container.buildDrawingCache();
-                                Bitmap captureView = container.getDrawingCache();
+        if (itemId == R.id.share_p_goal) {
+            //Toast.makeText(getApplicationContext(), "공유", Toast.LENGTH_LONG).show();
 
-                                //이미지 저장하기
+            Log.d("TAG", "공유 버튼 눌리고있나?");
+            AlertDialog.Builder msgBuilder = new AlertDialog.Builder(custom_p_goal_click.this)
+                    .setTitle("공유")
+                    .setMessage("해당 도장판을 공유하시겠습니까?")
+                    .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            //Toast.makeText(getApplicationContext(), "공유", Toast.LENGTH_SHORT).show();
+                            View container;
+                            container = getWindow().getDecorView();
+                            container.buildDrawingCache();
+                            Bitmap captureView = container.getDrawingCache();
 
-                                 //폴더 경로
-                                File adress = Environment.getExternalStoragePublicDirectory("/DCIM/Camera/");
+                            //이미지 저장하기
 
-                                FileOutputStream fos;
-                                if (!adress.exists()) {
-                                     adress.mkdir();
-                                }
+                            //폴더 경로
+                            File adress = Environment.getExternalStoragePublicDirectory("/DCIM/Camera/");
 
-                                //저장
-                                String strFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Camera/";
-                                try {
-                                    fos = new FileOutputStream(strFilePath + System.currentTimeMillis() + ".jpeg");
-                                    captureView.compress(Bitmap.CompressFormat.JPEG, 90, fos);
-                                    //sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(adress))));
-
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                 }
-
-                                 //이미지 공유
-                                // Uri uir = Uri.fromFile(new File(adress));
+                            FileOutputStream fos;
+                            if (!adress.exists()) {
+                                adress.mkdir();
                             }
-                        })
-                        .setNeutralButton("취소", null);
 
-                AlertDialog msgDlg = msgBuilder.create();
-                msgDlg.show();
-                return true;
-                //툴바의 아이콘이 할 기능 정의할 것
-                //현재 화면 캡처 저장
-//                builder.setTitle("공유").setMessage("해당 도장판을 저장하시겠습니까?").setPositiveButton("저장하기", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//
-//                        View container;
-//                        container = getWindow().getDecorView();
-//                        container.buildDrawingCache();
-//                        Bitmap captureView = container.getDrawingCache();
-//
-//                        //이미지 저장하기
-//
-//                        //폴더 경로
-//                        File adress = Environment.getExternalStoragePublicDirectory("/DCIM/Camera/");
-//
-//                        FileOutputStream fos;
-//                        if (!adress.exists()) {
-//                            adress.mkdir();
-//                        }
-//
-//                        //저장
-//                        String strFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Camera/";
-//                        try {
-//                            fos = new FileOutputStream(strFilePath + System.currentTimeMillis() + ".jpeg");
-//                            captureView.compress(Bitmap.CompressFormat.JPEG, 90, fos);
-//                            //sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(adress))));
-//
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-//
-//                        //이미지 공유
-//                        // Uri uir = Uri.fromFile(new File(adress));
-//
-//                        //위의 uri이용해서 intent로 값 보내주기기
-//
-//                    }
-//                }).setNeutralButton("취소", null).show();
-            default:
-                Toast.makeText(getApplicationContext(), "뭐지", Toast.LENGTH_SHORT).show();
-                return super.onOptionsItemSelected(item);
+                            //저장
+                            String strFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Camera/";
+                            try {
+                                fos = new FileOutputStream(strFilePath + System.currentTimeMillis() + ".jpeg");
+                                captureView.compress(Bitmap.CompressFormat.JPEG, 90, fos);
+                                //sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(adress))));
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                            //이미지 공유
+                            // Uri uir = Uri.fromFile(new File(adress));
+                        }
+                    })
+                    .setNeutralButton("취소", null);
+
+            AlertDialog msgDlg = msgBuilder.create();
+            msgDlg.show();
+            return true;
+
+        } else {
+            Toast.makeText(getApplicationContext(), "뭐지", Toast.LENGTH_SHORT).show();
+            return super.onOptionsItemSelected(item);
         }
-
     }
 
 
@@ -617,9 +582,7 @@ public class custom_p_goal_click extends AppCompatActivity {
         });
 
 
-        //0으로초기화 방지
-        //ReadPersonalDialog();
-       // gridView.setAdapter(adapter);
+
 
     }
 

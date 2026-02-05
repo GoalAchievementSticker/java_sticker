@@ -48,14 +48,7 @@ public class Second extends Fragment {
     Bundle bundle = new Bundle();
     TabLayout.Tab tab;
 
-    //viewpager
-    //private ViewPager viewPager;
-    //private View vp;
 
-
-    //viewpager fragment끼리 데이터 패스
-    //SharedPreferences sharedpreferences;
-    //public static final String MyPREFERENCES = "MyPrefs" ;
 
 
     @Override
@@ -70,12 +63,6 @@ public class Second extends Fragment {
     public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         assert inflater != null;
         view = inflater.inflate(R.layout.custom_g_input1, container, false);
-        // LayoutInflater layoutInflater = (LayoutInflater) requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        //vp = getLayoutInflater().inflate(R.layout.activity_custom_g_input, null);
-
-        // gGoalInputActivity frag = (gGoalInputActivity) this.getActivity();
-        //assert frag != null;
-        // viewPager = frag.findViewById(R.id.input_viewPager);
 
 
         EditText goal = view.findViewById(R.id.sticker_goal);
@@ -86,7 +73,7 @@ public class Second extends Fragment {
 
 
 
-        //sharedpreferences =  getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
         noBtn.setOnClickListener(view -> {
             assert getFragmentManager() != null;
             getFragmentManager().popBackStack();
@@ -108,13 +95,7 @@ public class Second extends Fragment {
                 //입력한값 형 변환
                 int vi = Integer.parseInt(_count);
                 int l = Integer.parseInt(_limit);
-                //int g = Integer.parseInt(_goal);
 
-//                SharedPreferences.Editor editor = sharedpreferences.edit();
-//                editor.putString("count", String.valueOf(vi));
-//                editor.putString("limit", String.valueOf(l));
-//                editor.putString("goal", _goal);
-//                editor.commit();
 
                 Third third=new Third();
 
@@ -123,17 +104,6 @@ public class Second extends Fragment {
                 bundle.putString("goal", _goal);
                 bundle.putString("cate",cate);
                 third.setArguments(bundle);
-
-
-//                Bundle first = new Bundle();
-//                first.putInt("count", vi);
-//                first.putInt("count", vi);
-//                first.putInt("limit", l);
-//                first.putString("goal", _goal);
-//
-//                getParentFragmentManager().setFragmentResult("firstKey", first);
-                //viewPager.setCurrentItem(getItem(), true);
-
 
 
                 assert getFragmentManager() != null;

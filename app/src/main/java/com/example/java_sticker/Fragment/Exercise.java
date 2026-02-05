@@ -43,7 +43,7 @@ public class Exercise extends Fragment {
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference categoryReference = firebaseDatabase.getReference("Category");
 
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
 
@@ -51,15 +51,6 @@ public class Exercise extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Exercise.
-     */
-    // TODO: Rename and change types and number of parameters
     public static Exercise newInstance(String param1, String param2) {
         Exercise fragment = new Exercise();
         Bundle args = new Bundle();
@@ -82,8 +73,7 @@ public class Exercise extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
-//        getActivity().getSupportFragmentManager().popBackStack();
+
         View view = inflater.inflate(R.layout.fragment_exercise, container, false);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.fraghome_exercise_ry);

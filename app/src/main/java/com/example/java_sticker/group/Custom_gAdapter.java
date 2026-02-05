@@ -69,7 +69,6 @@ public class Custom_gAdapter extends BaseAdapter {
         sticker_img.setImageResource(R.drawable.plus);
 
         select_v = inflater.inflate(R.layout.activity_custom_ggoal_click, viewGroup, false);
-//        ll = select_v.findViewById(R.id.select_sticker);
         gridView = select_v.findViewById(R.id.g_gridView);
 
         // Got the download URL for 'plus.png'

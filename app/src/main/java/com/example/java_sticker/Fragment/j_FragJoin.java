@@ -76,15 +76,6 @@ public class j_FragJoin extends Fragment {
 
     Group_main group_main;
 
-//    public j_FragJoin() {
-//        // Required empty public constructor
-//    }
-//
-//
-//    public static j_FragJoin newInstance() {
-//        j_FragJoin j_fragJoin = new j_FragJoin();
-//        return j_fragJoin;
-//    }
 
     @Override
     public void onResume() {
@@ -149,13 +140,6 @@ public class j_FragJoin extends Fragment {
         profile_databaseReference.child("user").child(uid).child("profileImageUrl").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-              /*  String uri = snapshot.getValue(String.class);
-                g_pics = cv.findViewById(R.id.g_pic);
-                Log.d("g_pics", String.valueOf(g_pics));
-                Log.d("프사 url",uri);
-                Glide.with(view)
-                        .load(uri)
-                        .into(g_pics);*/
             }
 
             @Override

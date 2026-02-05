@@ -23,11 +23,6 @@ import com.example.java_sticker.gGoalInput.gGoalInputAdapter;
 public class gGoalInputActivity extends AppCompatActivity {
     private FrameLayout fl;
 
-//    private ArrayList<String> tabNames = new ArrayList<>();
-
-    //    private First first;
-//    private Second second;
-//    private Third third;
 
 
     Fragment fragment = null;
@@ -50,9 +45,6 @@ public class gGoalInputActivity extends AppCompatActivity {
         fl = findViewById(R.id.input_framelayout);
         tabLayout = findViewById(R.id.tab_layout);
 
-//        tabLayout.addTab(tabLayout.newTab().setText("그룹골1"));
-//        tabLayout.addTab(tabLayout.newTab().setText("그룹골2"));
-//        tabLayout.addTab(tabLayout.newTab().setText("그룹골3"));
 
         fragment = new First();
         fragmentManager = getSupportFragmentManager();
@@ -61,51 +53,11 @@ public class gGoalInputActivity extends AppCompatActivity {
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         fragmentTransaction.commit();
 
-//        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//                //viewPager.setCurrentItem(tab.getPosition());
-//                switch (tab.getPosition()) {
-//                    case 0:
-//                        fragment = new First();
-//                        break;
-//                    case 1:
-//                        fragment = new Second();
-//                        break;
-//                    case 2:
-//                        fragment = new Third();
-//                        break;
-//                }
-//                FragmentManager fm = getSupportFragmentManager();
-//                FragmentTransaction ft = fm.beginTransaction();
-//                ft.replace(R.id.input_framelayout, fragment);
-//                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-//                ft.commit();
-//            }
-
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//
-//            }
-//        });
-
         //viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         gGoalInputAdapter adapter = new gGoalInputAdapter(getSupportFragmentManager(), 3);
         //viewPager.setAdapter(adapter);
 
 
-//        setTabLayout();
-//        loadTabName();
-//        setViewPager();
-
-//        createFragment();
-//        createViewpager();
-//        settingTabLayout();
     }
 
     //fragment 생성

@@ -154,16 +154,38 @@ public class MainActivity extends AppCompatActivity {
         fab_main.setOnClickListener(view -> toggleFab());
 
 
-        //네비게이션뷰의 아이템 클릭시
+//        //네비게이션뷰의 아이템 클릭시
+//        navigationView.setNavigationItemSelectedListener(item -> {
+//            switch (item.getItemId()) {
+//                case R.id.group_goal:
+//                    Intent groupIntent = new Intent(MainActivity.this, Group_main.class);
+//                    startActivity(groupIntent);
+//                    finish();
+//                    //Toast.makeText(MainActivity.this, "그룹도장판", Toast.LENGTH_SHORT).show();
+//                    break;
+//            }
+//
+//            drawerLayout.closeDrawer(navigationView);
+//
+//            return false;
+//        });
+
+
+        // 네비게이션뷰의 아이템 클릭시
         navigationView.setNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.group_goal:
-                    Intent groupIntent = new Intent(MainActivity.this, Group_main.class);
-                    startActivity(groupIntent);
-                    finish();
-                    //Toast.makeText(MainActivity.this, "그룹도장판", Toast.LENGTH_SHORT).show();
-                    break;
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.group_goal) {
+                Intent groupIntent = new Intent(MainActivity.this, Group_main.class);
+                startActivity(groupIntent);
+                finish();
+                //Toast.makeText(MainActivity.this, "그룹도장판", Toast.LENGTH_SHORT).show();
             }
+
+            // 만약 다른 아이템들이 있다면 else if를 추가하여 처리할 수 있습니다.
+            // else if (itemId == R.id.some_other_item) {
+            //     // ... 다른 아이템에 대한 코드 ...
+            // }
 
             drawerLayout.closeDrawer(navigationView);
 

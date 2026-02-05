@@ -47,9 +47,7 @@ public class Group_main extends AppCompatActivity {
     Fragment setup;
     Fragment setup_profile_img;
     Fragment setup_name;
-    //Fragment DetailFragment;
 
-    Toolbar toolbar;
 
 
     @RequiresApi(api = 33)
@@ -60,14 +58,6 @@ public class Group_main extends AppCompatActivity {
 
         String url = new Intent().getStringExtra("LOAD_URL");
 
-//        logRegToken();
-//        runtimeEnableAutoInit();
-//        deviceGroupUpstream();
-//        sendUpstream();
-
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        //Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);// ActionBar 타이틀(앱이름) 감추기
 
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
@@ -101,20 +91,21 @@ public class Group_main extends AppCompatActivity {
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.home:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.group_layout, fragment_home).commitAllowingStateLoss();
-                    return true;
-                case R.id.join_group:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.group_layout, fragment_group_join)
-                            .addToBackStack(String.valueOf(fragment_group_join))
-                            .commitAllowingStateLoss();
-                    return true;
+            int itemId = item.getItemId();
 
-                case R.id.mypage:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.group_layout, fragment_mypage).commitAllowingStateLoss();
-                    return true;
+            if (itemId == R.id.home) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.group_layout, fragment_home).commitAllowingStateLoss();
+                return true;
+            } else if (itemId == R.id.join_group) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.group_layout, fragment_group_join)
+                        .addToBackStack(String.valueOf(fragment_group_join))
+                        .commitAllowingStateLoss();
+                return true;
+            } else if (itemId == R.id.mypage) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.group_layout, fragment_mypage).commitAllowingStateLoss();
+                return true;
             }
+
             return true;
         });
 

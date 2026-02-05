@@ -146,16 +146,21 @@ public class FragHome extends Fragment {
             }
         });
 
+
         //네비게이션뷰의 아이템 클릭시
         navigationView.setNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.personal_goal:
-                    Intent personalIntent = new Intent(getActivity(), MainActivity.class);
-                    startActivity(personalIntent);
-                    getActivity().finish();
-                    //Toast.makeText(MainActivity.this, "그룹도장판", Toast.LENGTH_SHORT).show();
-                    break;
+            int itemId = item.getItemId(); // item.getItemId()를 변수에 할당하여 코드의 가독성을 높입니다.
+
+            if (itemId == R.id.personal_goal) {
+                Intent personalIntent = new Intent(getActivity(), MainActivity.class);
+                startActivity(personalIntent);
+                getActivity().finish();
+                //Toast.makeText(MainActivity.this, "그룹도장판", Toast.LENGTH_SHORT).show();
             }
+            // 다른 아이템이 있다면 else if를 사용하여 계속 추가할 수 있습니다.
+            // else if (itemId == R.id.another_item) {
+            //     // 또 다른 아이템 클릭 시 실행할 코드
+            // }
 
             drawerLayout.closeDrawer(navigationView);
 

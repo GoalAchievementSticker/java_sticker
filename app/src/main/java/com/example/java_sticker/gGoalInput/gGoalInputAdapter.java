@@ -43,18 +43,6 @@ public class gGoalInputAdapter extends FragmentPagerAdapter {
         }
     }
 
-//    public void addFragment(Fragment fragment) {
-//        mFragmentList.add(fragment);
-//    }
-//
-//    @NonNull
-//    public Fragment createFragment(int position) {
-//        return mFragmentList.get(position);
-//    }
-//
-//    public int getItemCount() {
-//        return mFragmentList.size();
-//    }
 
     //전체 페이지 개수
     @Override
@@ -62,9 +50,5 @@ public class gGoalInputAdapter extends FragmentPagerAdapter {
         return tabCount;
     }
 
-//
-//    @Override
-//    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-//        return false;
-//    }
+
 }

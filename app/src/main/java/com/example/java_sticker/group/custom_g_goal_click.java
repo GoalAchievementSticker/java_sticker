@@ -456,14 +456,6 @@ public class custom_g_goal_click extends Fragment {
         //주소에서 Uri 를 받아온 것을 Intent 에 보내기
         intent.putExtra(Intent.EXTRA_STREAM, stickerAssetUri);
 
-//        // 액티비티 인스턴스화를 하면 그것이 암시적 인텐트를 해결한다
-//        Activity activity = getActivity();
-//        assert activity != null;
-//        activity.grantUriPermission(
-//                "com.instagram.android", stickerAssetUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//        if (activity.getPackageManager().resolveActivity(intent, 0) != null) {
-//            activity.startActivityForResult(intent, 0);
-//        }
 
         try {
             startActivity(Intent.createChooser(intent, "Share Screenshot"));
@@ -502,16 +494,6 @@ public class custom_g_goal_click extends Fragment {
         return file;
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item){
-//        switch (item.getItemId()){
-//            case R.id.share:
-//                Toast.makeText(getContext(), "쉐어버튼 ", Toast.LENGTH_SHORT).show();
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
 
 
     //사진찍기 권한 확인인
@@ -533,35 +515,38 @@ public class custom_g_goal_click extends Fragment {
 
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == 0) {
-            for (int grantResult : grantResults) {
-                //허용됬다면
-                if (grantResult == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(getContext(), "앱권한 설정완료", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getContext(), "앱권한설정하세요", Toast.LENGTH_SHORT).show();
-                    getActivity().finish();
-                }
+@Override
+public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+    // 권한 요청 코드에 따라 분기하여 처리
+    switch (requestCode) {
+        case 0: // 사진 권한 등 특정 권한 요청
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // 권한이 허용된 경우, 사용자에게 알리고 원하는 작업을 수행
+                Toast.makeText(getContext(), "사진 권한이 허용되었습니다.", Toast.LENGTH_SHORT).show();
+            } else {
+                // 권한이 거부된 경우, 사용자에게 왜 이 권한이 필요한지 설명
+                // 앱을 강제 종료하지 않고, 기능 사용을 제한하는 것이 좋습니다.
+                Toast.makeText(getContext(), "사진 권한이 거부되어 일부 기능을 사용할 수 없습니다.", Toast.LENGTH_SHORT).show();
             }
-        }
+            break;
 
-        // [START handle_ask_post_notifications_request]
-        switch (requestCode) {
-            case NOTIFICATION_REQUEST_CODE:
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0 &&
-                        grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // FCM SDK (and your app) can post notifications.
-                } else {
-                    // TODO: Inform user that that your app will not show notifications.
-                }
-        }
+        case NOTIFICATION_REQUEST_CODE:
+            // 알림 권한 요청
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // 알림 권한이 허용된 경우
+                Toast.makeText(getContext(), "알림 권한이 허용되었습니다.", Toast.LENGTH_SHORT).show();
+            } else {
+                // 알림 권한이 거부된 경우
+                Toast.makeText(getContext(), "알림 권한이 거부되어 앱 알림을 받을 수 없습니다.", Toast.LENGTH_SHORT).show();
+            }
+            break;
 
+        // 다른 권한 요청이 있다면 여기에 case 추가
     }
+}
 
 
     private String getRealPathFromURI(Uri imageUri) {
@@ -994,49 +979,7 @@ public class custom_g_goal_click extends Fragment {
     }
 
     private void showNoti() {
-//        builder = null;
-//        manager = (NotificationManager) getActivity().getSystemService(NOTIFICATION_SERVICE);
-//        //버전 오레오 이상일 경우
-//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-//            manager.createNotificationChannel(
-//                    new NotificationChannel(CHANNEL_ID, CHANEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
-//            );
-//
-//            builder = new NotificationCompat.Builder(getContext(),CHANNEL_ID);
-//
-//            //하위 버전일 경우
-//        }else{
-//            builder = new NotificationCompat.Builder(getContext());
-//        }
-//
-//
-//        Intent intent = new Intent(getContext(), Group_main.class);
-////        intent.putExtra("name",name);
-//        PendingIntent pendingIntent = PendingIntent.getActivity(getContext(), 101,
-//                intent, PendingIntent.FLAG_UPDATE_CURRENT);
-//
-//        //알림창 제목
-//        builder.setContentTitle("BetterMe");
-//
-//        //알림창 메시지
-//        builder.setContentText("user 님이 스티커를 찍었습니다");
-//
-//        //알림창 아이콘
-//        builder.setSmallIcon(R.mipmap.ic_main_round);
-//
-//        //알림창 터치시 상단 알림상태창에서 알림이 자동으로 삭제되게 합니다.
-//        builder.setAutoCancel(true);
-//
-//
-//        //pendingIntent를 builder에 설정 해줍니다.
-//        //알림창 터치시 인텐트가 전달할 수 있도록 해줍니다.
-//        builder.setContentIntent(pendingIntent);
-//
-//        Notification notification = builder.build();
-//
-//        //알림창 실행
-//        manager.notify(1,notification);
-//
+
 
         //내 uid 뽑아서 userName 접근하면 이름 get
         DatabaseReference name = user_databaseReference.child(uid);
@@ -1149,13 +1092,7 @@ public class custom_g_goal_click extends Fragment {
 
         }
 
-//        if (requestCode == 5) {
-//            if (resultCode == Activity.RESULT_OK) {
-//                Toast.makeText(getContext(), "스토리 공유 성공", Toast.LENGTH_SHORT).show();
-//            } else {
-//                Toast.makeText(getContext(), "스토리 공유 실패", Toast.LENGTH_SHORT).show();
-//            }
-//        }
+
 
 
     }
@@ -1270,24 +1207,5 @@ public class custom_g_goal_click extends Fragment {
     }
 
 
-    //클릭한 리사이클러뷰 아이템의 참가한 유저의 uid를 가져오는 함수
-//    private void ReadUidKeyDialog() {
-//        uid_key.clear();
-//        uid_key_ds.addListenerForSingleValueEvent(new ValueEventListener() {
-//            //@SuppressLint("NotifyDataSetChanged")
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot dataSnapshot : snapshot.child("uid").getChildren()) {
-//                    uid_key.add(dataSnapshot.getValue(String.class));
-//                    //Log.d("TAG", String.valueOf(uid_key));
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                Toast.makeText(getContext(), "불러오기 실패", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//    }
+
 }

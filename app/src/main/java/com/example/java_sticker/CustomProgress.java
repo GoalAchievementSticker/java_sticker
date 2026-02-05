@@ -126,11 +126,7 @@ public class CustomProgress extends View {
         backgroundCircle.setAntiAlias(true);
         backgroundCircle.setStyle(Paint.Style.STROKE);
 
-//        RectF oval1 = new RectF();
-//        oval1.left = (width)-10;
-//        oval1.top =  (height)-10;
-//        oval1.right = 10*2+((width)-10);
-//        oval1.bottom = 10*2+((height) -10);
+
         canvas.drawArc(new RectF(10,10,width-10,height-10),0,360,false,backgroundCircle);
 
         canvas.drawArc(new RectF(10,10,width-10,height-10),-90,((float)this.curValue/(float) this.maxValue*360),false,circle);

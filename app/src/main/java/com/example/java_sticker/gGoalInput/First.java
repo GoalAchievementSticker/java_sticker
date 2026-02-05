@@ -50,11 +50,6 @@ public class First extends Fragment implements View.OnClickListener {
 
 
     private View view;
-    //viewpager
-    //private ViewPager viewPager;
-
-//    SharedPreferences sharedpreferences;
-//    public static final String MyPREFERENCES = "MyPrefs";
 
 
     String cate_;
@@ -70,20 +65,12 @@ public class First extends Fragment implements View.OnClickListener {
         view = inflater.inflate(R.layout.custom_g_input3, container, false);
 
 
-        // w_FragJoin fj = ((w_FragJoin) this.getParentFragment());
-//        if (fj != null) {
-//            viewPager = fj.getView().findViewById(R.id.viewPager);
-//        }
-
 
         exercise = view.findViewById(R.id.exercise);
         study = view.findViewById(R.id.study);
         hobby = view.findViewById(R.id.hobby);
         routine = view.findViewById(R.id.routine);
 
-//        user = FirebaseAuth.getInstance().getCurrentUser();
-//        assert user != null;
-//        uid = user.getUid();
 
 
         Button preBtn = view.findViewById(R.id.preBtn);
@@ -116,23 +103,6 @@ public class First extends Fragment implements View.OnClickListener {
 
     private void ToFragjoin() {
 
-        // startActivity(new Intent(getContext(), Group_main.class));
-
-
-        //First에서 받은 데이터
-//        bundle.putInt("count", cnt);
-//        bundle.putString("goal", goal);
-//        bundle.putInt("limit", limit);
-//
-//        //Second 정보
-//        bundle.putString("auth", auth);
-//        Log.d("여기", String.valueOf(cnt));
-//        Log.d("여기", String.valueOf(goal));
-//        Log.d("여기", String.valueOf(limit));
-//        Log.d("여기", String.valueOf(auth));
-
-
-        // w_fragJoin.setArguments(bundle);
         assert getFragmentManager() != null;
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.input_framelayout, second);
@@ -146,85 +116,70 @@ public class First extends Fragment implements View.OnClickListener {
     }
 
 
-    @SuppressLint("NonConstantResourceId")
-    @Override
-    public void onClick(View v) {
-        //입력한값 형 변환
-        String ex = exercise.getText().toString();
-        String st = study.getText().toString();
-        String hob = hobby.getText().toString();
-        String rout = routine.getText().toString();
 
-        // SharedPreferences.Editor editor = sharedpreferences.edit();
+@SuppressLint("NonConstantResourceId")
+@Override
+public void onClick(View v) {
+    //입력한값 형 변환
+    String ex = exercise.getText().toString();
+    String st = study.getText().toString();
+    String hob = hobby.getText().toString();
+    String rout = routine.getText().toString();
 
+    int viewId = v.getId(); // v.getId()를 변수에 할당하여 가독성을 높입니다.
 
-        switch (v.getId()) {
-            case R.id.exercise:
-                if (exercise.isChecked()) {
-                    exercise.setChecked(true);
-                    Toast.makeText(getContext(), "운동 카테고리 클릭", Toast.LENGTH_SHORT).show();
-                    bundle.putString("cate", ex);
-                    second.setArguments(bundle);
+    if (viewId == R.id.exercise) {
+        if (exercise.isChecked()) {
+            exercise.setChecked(true);
+            Toast.makeText(getContext(), "운동 카테고리 클릭", Toast.LENGTH_SHORT).show();
+            bundle.putString("cate", ex);
+            second.setArguments(bundle);
 
-                    study.setChecked(false);
-                    routine.setChecked(false);
-                    hobby.setChecked(false);
-                } else {
-                    exercise.setChecked(false);
-                }
-
-                break;
-
-            case R.id.study:
-                if (study.isChecked()) {
-                    study.setChecked(true);
-                    Toast.makeText(getContext(), "공부 카테고리 클릭", Toast.LENGTH_SHORT).show();
-                    bundle.putString("cate", st);
-                    second.setArguments(bundle);
-                    routine.setChecked(false);
-                    hobby.setChecked(false);
-                    exercise.setChecked(false);
-                } else {
-                    study.setChecked(false);
-                }
-
-                break;
-            case R.id.routine:
-                if (routine.isChecked()) {
-                    routine.setChecked(true);
-                    Toast.makeText(getContext(), "루틴 카테고리 클릭", Toast.LENGTH_SHORT).show();
-                    bundle.putString("cate", rout);
-                    second.setArguments(bundle);
-                    cate_ = rout;
-                    hobby.setChecked(false);
-                    exercise.setChecked(false);
-                    study.setChecked(false);
-                } else {
-                    routine.setChecked(false);
-                }
-
-                break;
-            case R.id.hobby:
-                if (hobby.isChecked()) {
-                    hobby.setChecked(true);
-                    Toast.makeText(getContext(), "취미 카테고리 클릭", Toast.LENGTH_SHORT).show();
-                    bundle.putString("cate", hob);
-                    second.setArguments(bundle);
-                    cate_ = hob;
-                    exercise.setChecked(false);
-                    study.setChecked(false);
-                    routine.setChecked(false);
-                } else {
-                    hobby.setChecked(false);
-                }
-
-                break;
-
-            default:
-                break;
+            study.setChecked(false);
+            routine.setChecked(false);
+            hobby.setChecked(false);
+        } else {
+            exercise.setChecked(false);
+        }
+    } else if (viewId == R.id.study) {
+        if (study.isChecked()) {
+            study.setChecked(true);
+            Toast.makeText(getContext(), "공부 카테고리 클릭", Toast.LENGTH_SHORT).show();
+            bundle.putString("cate", st);
+            second.setArguments(bundle);
+            routine.setChecked(false);
+            hobby.setChecked(false);
+            exercise.setChecked(false);
+        } else {
+            study.setChecked(false);
+        }
+    } else if (viewId == R.id.routine) {
+        if (routine.isChecked()) {
+            routine.setChecked(true);
+            Toast.makeText(getContext(), "루틴 카테고리 클릭", Toast.LENGTH_SHORT).show();
+            bundle.putString("cate", rout);
+            second.setArguments(bundle);
+            cate_ = rout;
+            hobby.setChecked(false);
+            exercise.setChecked(false);
+            study.setChecked(false);
+        } else {
+            routine.setChecked(false);
+        }
+    } else if (viewId == R.id.hobby) {
+        if (hobby.isChecked()) {
+            hobby.setChecked(true);
+            Toast.makeText(getContext(), "취미 카테고리 클릭", Toast.LENGTH_SHORT).show();
+            bundle.putString("cate", hob);
+            second.setArguments(bundle);
+            cate_ = hob;
+            exercise.setChecked(false);
+            study.setChecked(false);
+            routine.setChecked(false);
+        } else {
+            hobby.setChecked(false);
         }
     }
-//    //private int getItem() {
-//        return viewPager.getCurrentItem() + 1;
-//    }
+}
+
 }
